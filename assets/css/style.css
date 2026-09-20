@@ -468,7 +468,7 @@ footer {
 @media (max-width: 640px) {
   .nav-links { gap: 16px; }
   .nav-links a { font-size: 13px; }
-  .nav-links a:nth-child(n+4) { display: none; }
+      .nav-links a:nth-child(n+6) { display: none; }
   .hero { padding: 60px 0 40px; }
   .hero-content { padding: 28px 22px; }
   section { padding: 52px 0; }

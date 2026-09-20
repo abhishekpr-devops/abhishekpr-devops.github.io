@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Resume — Abhishek P R | Junior DevOps Engineer</title>
+  <meta name="description" content="Resume of Abhishek P R — Junior DevOps Engineer specializing in AWS, Terraform, Docker, and CI/CD automation." />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Reuse the same global styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/resume.css" />
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="logo"><a href="/" style="color: inherit;">abhishek<span>@</span>devops:~$</a></div>
+      <div class="nav-links">
+        <a href="/">← Back to Home</a>
+        <a href="/#projects">Projects</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="resume-hero">
+    <div class="container">
+      <div class="section-title">// resume</div>
+      <div class="resume-meta">
+        <div>
+          <h1>Abhishek P R</h1>
+          <p>Junior DevOps Engineer · Kerala, India</p>
+        </div>
+        <div class="resume-actions">
+          <a
+            href="Abhishek_PR_DevOps_Engineer_Resume.pdf"
+            class="btn primary"
+            download="Abhishek_PR_DevOps_Engineer_Resume.pdf"
+          >
+            ⬇ Download PDF
+          </a>
+          <a
+            href="Abhishek_PR_DevOps_Engineer_Resume.pdf"
+            class="btn"
+            target="_blank"
+            rel="noopener"
+          >
+            ↗ Open in New Tab
+          </a>
+        </div>
+      </div>
+
+      <!-- Desktop: embed the PDF -->
+      <div class="pdf-frame">
+        <iframe
+          src="Abhishek_PR_DevOps_Engineer_Resume.pdf#view=FitH"
+          title="Abhishek P R Resume"
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <!-- Mobile (and fallback): show CTA instead of a tiny iframe -->
+      <div class="pdf-fallback" style="display: none;">
+        <p>📄 Tap below to view or download the resume.</p>
+        <div class="resume-actions" style="justify-content: center;">
+          <a
+            href="Abhishek_PR_DevOps_Engineer_Resume.pdf"
+            class="btn primary"
+            target="_blank"
+            rel="noopener"
+          >
+            👁 View Resume
+          </a>
+          <a
+            href="Abhishek_PR_DevOps_Engineer_Resume.pdf"
+            class="btn"
+            download="Abhishek_PR_DevOps_Engineer_Resume.pdf"
+          >
+            ⬇ Download PDF
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Abhishek P R · Built with Git, GitHub Actions & GitHub Pages</p>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+  <script>
+    const bar = document.getElementById('progressBar');
+    const bt = document.getElementById('backTop');
+
+    function onScroll() {
+      const h = document.documentElement;
+      const scrollable = h.scrollHeight - h.clientHeight;
+      const pct = scrollable > 0 ? (h.scrollTop / scrollable) * 100 : 0;
+      bar.style.width = pct + '%';
+      bt.classList.toggle('show', h.scrollTop > 400);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('load', onScroll);
+
+    bt.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
