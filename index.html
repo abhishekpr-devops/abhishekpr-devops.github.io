@@ -1,10 +1,702 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Abhishek PR</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Abhishek P R | Junior DevOps Engineer Portfolio</title>
+  <meta name="description" content="Portfolio of Abhishek P R, Junior DevOps Engineer specializing in AWS, Terraform, Docker, GitHub Actions, and Linux infrastructure automation." />
+  <meta name="keywords" content="DevOps Engineer, AWS, Terraform, Docker, GitHub Actions, Linux, CI/CD, Abhishek P R" />
+  <meta name="author" content="Abhishek P R" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Abhishek P R | Junior DevOps Engineer & Cloud Portfolio" />
+  <meta property="og:description" content="Explore cloud projects, IaC architectures, containerized microservices, and CI/CD pipelines built by Abhishek P R." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://abhishek-lab.store" />
+
+  <!-- Favicon (terminal emoji) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --bg-alt: #10151f;
+      --card: #131a26;
+      --border: #1f2937;
+      --text: #e6edf3;
+      --text-dim: #8b98a9;
+      --accent: #00d4aa;
+      --accent-dim: #00a888;
+      --blue: #4a9eff;
+      --yellow: #f0b429;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--accent-dim); }
+
+    code, .mono { font-family: 'JetBrains Mono', monospace; }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- NAV ---------- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 14, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--text);
+      font-size: 16px;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      color: var(--text-dim);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(0, 212, 170, 0.08), transparent 60%);
+      pointer-events: none;
+    }
+    .terminal-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px 8px 0 0;
+      padding: 8px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.red { background: #ff5f56; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #27c93f; }
+
+    .hero-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0 12px 12px 12px;
+      padding: 40px 36px;
+      position: relative;
+      z-index: 1;
+    }
+    .prompt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .prompt::before { content: '$ '; color: var(--text-dim); }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .role-line {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    .role-line .hl { color: var(--accent); font-weight: 600; }
+
+    .tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 32px;
+      padding-left: 14px;
+      border-left: 2px solid var(--accent);
+    }
+
+    .cta-group { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--bg-alt);
+      color: var(--text);
+      cursor: pointer;
+      transition: all .2s;
+      text-decoration: none;
+    }
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .btn.primary {
+      background: var(--accent);
+      color: #0a0e14;
+      border-color: var(--accent);
+    }
+    .btn.primary:hover {
+      background: var(--accent-dim);
+      color: #0a0e14;
+    }
+
+    /* ---------- SECTION ---------- */
+    section { padding: 72px 0; }
+    .section-title {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+    }
+    .section-heading {
+      font-size: clamp(24px, 3.5vw, 32px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about-text {
+      font-size: 17px;
+      color: var(--text-dim);
+      max-width: 780px;
+      line-height: 1.75;
+    }
+    .about-text strong { color: var(--text); font-weight: 600; }
+
+    /* ---------- SKILLS ---------- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      transition: border-color .2s, transform .2s;
+    }
+    .skill-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .skill-card h3 {
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--bg-alt);
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+    }
+
+    /* ---------- PROJECTS ---------- */
+    .projects { display: flex; flex-direction: column; gap: 20px; }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color .2s, transform .2s;
+    }
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .project-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .project-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .project-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(0, 212, 170, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(0, 212, 170, 0.3);
+      white-space: nowrap;
+    }
+    .project-desc {
+      color: var(--text-dim);
+      font-size: 15px;
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+    .project-features {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+    .project-features li {
+      font-size: 14px;
+      color: var(--text-dim);
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 6px;
+      line-height: 1.6;
+    }
+    .project-features li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+    .stack-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .project-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ---------- CERTS & EDU ---------- */
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .info-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .info-block h3 {
+      font-size: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+    .info-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .info-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-item .title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+    .info-item .meta { font-size: 13px; color: var(--text-dim); }
+    .info-item .meta .accent { color: var(--yellow); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+
+    /* ---------- CONTACT ---------- */
+    .contact-wrap {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px 36px;
+      text-align: center;
+    }
+    .contact-wrap h2 {
+      font-size: clamp(24px, 3.5vw, 32px);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .contact-wrap p {
+      color: var(--text-dim);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      font-size: 16px;
+    }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 640px) {
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 13px; }
+      .nav-links a:nth-child(n+4) { display: none; }
+      .hero { padding: 60px 0 40px; }
+      .hero-content { padding: 28px 22px; }
+      section { padding: 52px 0; }
+      .project-card, .info-block, .contact-wrap { padding: 22px; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Abhishek PR</h1>
-    <p>DevOps Engineer | AWS | Linux | Docker | Terraform</p>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">abhishek<span>@</span>devops:~$</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certs">Certs</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="terminal-bar">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span style="margin-left: 8px;">~/portfolio — bash</span>
+      </div>
+      <div class="hero-content">
+        <div class="prompt">whoami</div>
+        <h1>Abhishek P R</h1>
+        <p class="role-line">Junior <span class="hl">DevOps Engineer</span> · Cloud Infrastructure & Automation</p>
+        <p class="tagline">Building cloud infrastructure and automated deployment pipelines with AWS, Docker, and Terraform.</p>
+        <div class="cta-group">
+          <a href="Abhishek_PR_DevOps_Engineer_Resume.pdf" class="btn primary" target="_blank" rel="noopener">📄 View Resume</a>
+          <a href="https://github.com/abhishekpr-devops" class="btn" target="_blank" rel="noopener">⌥ GitHub</a>
+          <a href="https://linkedin.com/in/abhishek-pr-522409274" class="btn" target="_blank" rel="noopener">in LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">// about</div>
+      <h2 class="section-heading">Who I am</h2>
+      <p class="about-text">
+        I am a Computer Science Engineering graduate and Junior DevOps Engineer passionate about building reliable cloud infrastructure and automated delivery pipelines. My technical expertise spans <strong>AWS cloud services</strong>, <strong>Infrastructure as Code with Terraform</strong>, <strong>Docker containerization</strong>, and <strong>CI/CD workflows using GitHub Actions</strong>. Through hands-on personal projects, I have built modular AWS architectures with S3 remote state locking, configured Nginx reverse proxies for containerized microservices, and automated continuous deployments to EC2 over SSH. I am CCNA-trained and currently preparing for the <strong>AWS Solutions Architect Associate</strong> exam. I am seeking a long-term engineering role where I can optimize infrastructure, enforce DevSecOps standards, and scale systems reliably.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-title">// skills</div>
+      <h2 class="section-heading">Tech Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Cloud</h3>
+          <div class="skill-tags">
+            <span class="tag">AWS EC2</span>
+            <span class="tag">S3</span>
+            <span class="tag">VPC</span>
+            <span class="tag">Security Groups</span>
+            <span class="tag">Internet Gateway</span>
+            <span class="tag">Route Tables</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Containers</h3>
+          <div class="skill-tags">
+            <span class="tag">Docker</span>
+            <span class="tag">Docker Compose</span>
+            <span class="tag">Docker Networking</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>CI/CD</h3>
+          <div class="skill-tags">
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">Docker Hub</span>
+            <span class="tag">Pytest</span>
+            <span class="tag">SonarCloud</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Infrastructure as Code</h3>
+          <div class="skill-tags">
+            <span class="tag">Terraform</span>
+            <span class="tag">Modules</span>
+            <span class="tag">Remote State</span>
+            <span class="tag">State Locking</span>
+            <span class="tag">Drift Detection</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Scripting</h3>
+          <div class="skill-tags">
+            <span class="tag">Bash</span>
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>OS & Networking</h3>
+          <div class="skill-tags">
+            <span class="tag">Linux</span>
+            <span class="tag">Ubuntu</span>
+            <span class="tag">Nginx</span>
+            <span class="tag">HTTP/HTTPS</span>
+            <span class="tag">SSH</span>
+            <span class="tag">Cloudflare DNS</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Monitoring</h3>
+          <div class="skill-tags">
+            <span class="tag">Linux Service Monitoring</span>
+            <span class="tag">Logs & Alerts</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Version Control</h3>
+          <div class="skill-tags">
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-title">// projects</div>
+      <h2 class="section-heading">Things I've Built</h2>
+      <div class="projects">
+
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div class="project-head">
+            <h3 class="project-title">Terraform AWS Production Lab</h3>
+            <span class="project-status">✓ Completed</span>
+          </div>
+          <p class="project-desc">
+            Modular AWS infrastructure provisioned with Terraform, featuring remote state locking, drift detection, and resource imports. Architected a multi-environment setup (VPC, public subnet, IGW, route table, security group, EC2 web server) using reusable Terraform modules with centralized S3 remote state.
+          </p>
+          <ul class="project-features">
+            <li>Modular HCL architecture (<code>modules/network</code>, <code>modules/security</code>, <code>modules/ec2</code>) across <code>dev</code>, <code>staging</code>, and <code>prod</code></li>
+            <li>S3 remote state with locking — zero local state risks or race conditions</li>
+            <li>Drift detection &amp; automated reconciliation via <code>terraform plan</code> / <code>apply</code></li>
+            <li>S3 bucket import via <code>imports.tf</code> + <code>prevent_destroy</code> lifecycle rules</li>
+          </ul>
+          <div class="project-footer">
+            <div class="stack-tags">
+              <span class="tag">Terraform</span>
+              <span class="tag">AWS</span>
+              <span class="tag">S3</span>
+              <span class="tag">EC2</span>
+              <span class="tag">VPC</span>
+              <span class="tag">HCL</span>
+            </div>
+            <a class="project-link" href="https://github.com/abhishekpr-devops/terraform-aws-production-lab" target="_blank" rel="noopener">View Repo →</a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div class="project-head">
+            <h3 class="project-title">Calculator CI/CD with SonarCloud</h3>
+            <span class="project-status">✓ Completed</span>
+          </div>
+          <p class="project-desc">
+            Python Flask calculator API with Pytest unit testing, SonarCloud quality gates, Docker build, and automated EC2 deployment over SSH. Built a full GitHub Actions pipeline that automates the entire delivery lifecycle from code push to production.
+          </p>
+          <ul class="project-features">
+            <li>Pytest suite triggered on every push (<code>test_calculator.py</code>, <code>test_app.py</code>)</li>
+            <li>SonarCloud DevSecOps static analysis + quality gate via <code>sonar-project.properties</code></li>
+            <li>Docker image build and push to Docker Hub</li>
+            <li>Automated continuous deployment to AWS EC2 Ubuntu host over secure SSH</li>
+          </ul>
+          <div class="project-footer">
+            <div class="stack-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Flask</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">Docker</span>
+              <span class="tag">SonarCloud</span>
+              <span class="tag">EC2</span>
+            </div>
+            <a class="project-link" href="https://github.com/abhishekpr-devops/calculator-cicd-sonarqube" target="_blank" rel="noopener">View Repo →</a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <div class="project-head">
+            <h3 class="project-title">Docker Multi-App</h3>
+            <span class="project-status">✓ Completed</span>
+          </div>
+          <p class="project-desc">
+            Multi-container microservices architecture featuring a Python Flask backend and Nginx reverse proxy connected across a custom Docker bridge network. Automated build, networking, and health validation with a Bash script.
+          </p>
+          <ul class="project-features">
+            <li>Dual Dockerfiles (<code>Dockerfile.backend</code>, <code>Dockerfile.nginx</code>) for clean separation of concerns</li>
+            <li>Custom user-defined Docker bridge network (<code>my-network</code>) enabling DNS-based service discovery</li>
+            <li><code>nginx.conf</code> reverse proxy forwarding external port 8085 → backend port 5000</li>
+            <li><code>run.sh</code> automation for image build, network provisioning, and health verification</li>
+          </ul>
+          <div class="project-footer">
+            <div class="stack-tags">
+              <span class="tag">Docker</span>
+              <span class="tag">Nginx</span>
+              <span class="tag">Flask</span>
+              <span class="tag">Bash</span>
+              <span class="tag">Networking</span>
+            </div>
+            <a class="project-link" href="https://github.com/abhishekpr-devops/docker-multi-app" target="_blank" rel="noopener">View Repo →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTS & EDUCATION -->
+  <section id="certs">
+    <div class="container">
+      <div class="section-title">// credentials</div>
+      <h2 class="section-heading">Education & Certifications</h2>
+      <div class="two-col">
+        <div class="info-block">
+          <h3>Education</h3>
+          <div class="info-item">
+            <div class="title">B.Tech in Computer Science and Engineering</div>
+            <div class="meta">Jawaharlal College of Engineering and Technology (JCET), Ottapalam<br>2021 – 2025</div>
+          </div>
+        </div>
+        <div class="info-block">
+          <h3>Certifications</h3>
+          <div class="info-item">
+            <div class="title">AWS Certified Solutions Architect – Associate</div>
+            <div class="meta">Amazon Web Services <span class="accent">· In Progress</span></div>
+          </div>
+          <div class="info-item">
+            <div class="title">CCNA 200-301 Network Fundamentals</div>
+            <div class="meta">Simplilearn · Jun 2026</div>
+          </div>
+          <div class="info-item">
+            <div class="title">Introduction to Cloud Computing</div>
+            <div class="meta">Simplilearn · Jun 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">// contact</div>
+      <div class="contact-wrap">
+        <h2>Let's build something reliable.</h2>
+        <p>Open to Junior DevOps roles, cloud infrastructure work, and CI/CD automation opportunities. Feel free to reach out — I usually reply within a day.</p>
+        <div class="contact-links">
+          <a href="mailto:prabhishek71@gmail.com" class="btn primary">✉ prabhishek71@gmail.com</a>
+          <a href="https://linkedin.com/in/abhishek-pr-522409274" class="btn" target="_blank" rel="noopener">in LinkedIn</a>
+          <a href="https://github.com/abhishekpr-devops" class="btn" target="_blank" rel="noopener">⌥ GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Abhishek P R · Built with Git, GitHub Actions & GitHub Pages</p>
+    </div>
+  </footer>
+
 </body>
 </html>
