@@ -1,0 +1,35 @@
+name: Portfolio CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: HTML syntax check
+        run: |
+          if ! grep -q "<!DOCTYPE html>" index.html; then
+            echo "Missing DOCTYPE"; exit 1
+          fi
+          echo "✓ index.html looks good"
+
+      - name: Check CNAME
+        run: |
+          if [ ! -f CNAME ]; then
+            echo "CNAME missing"; exit 1
+          fi
+          echo "✓ CNAME present: $(cat CNAME)"
+
+      - name: Verify resume file exists
+        run: |
+          if [ ! -f Abhishek_PR_DevOps_Engineer_Resume.pdf ]; then
+            echo "⚠ Resume PDF missing"
+            exit 1
+          fi
+          echo "✓ Resume present"
