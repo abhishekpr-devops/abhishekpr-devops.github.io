@@ -354,6 +354,12 @@ section { padding: 72px 0; }
   border: 1px solid rgba(0, 212, 170, 0.3);
   white-space: nowrap;
 }
+.ci-badge {
+  height: 20px;
+  border: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
 .project-desc {
   color: var(--text-dim);
   font-size: 15px;
@@ -468,9 +474,32 @@ footer {
 @media (max-width: 640px) {
   .nav-links { gap: 16px; }
   .nav-links a { font-size: 13px; }
-      .nav-links a:nth-child(n+6) { display: none; }
+  .nav-links a:nth-child(n+6) { display: none; }
   .hero { padding: 60px 0 40px; }
   .hero-content { padding: 28px 22px; }
   section { padding: 52px 0; }
   .project-card, .info-block, .contact-wrap { padding: 22px; }
+}
+
+/* ---------- TYPEWRITER ---------- */
+.typewriter {
+  border-right: 2px solid var(--accent);
+  padding-right: 4px;
+  animation: blink 1s step-end infinite;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.typewriter.done {
+  border-right: none;
+  animation: none;
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .typewriter {
+    animation: none;
+    border-right: none;
+  }
+  .status-dot { animation: none; }
 }

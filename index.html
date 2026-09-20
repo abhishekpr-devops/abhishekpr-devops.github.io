@@ -57,9 +57,9 @@
         <span style="margin-left: 8px;">~/portfolio — bash</span>
       </div>
       <div class="hero-content">
-        <div class="prompt">whoami</div>
-        <h1>Abhishek P R</h1>
-        <p class="role-line">Junior <span class="hl">DevOps Engineer</span> · Cloud Infrastructure & Automation</p>
+        <div class="prompt typewriter" data-text="whoami"></div>
+        <h1 class="typewriter" data-text="Abhishek P R"></h1>
+        <p class="role-line typewriter" data-text="Junior DevOps Engineer · Cloud Infrastructure & Automation"></p>
         <p class="tagline">Building cloud infrastructure and automated deployment pipelines with AWS, Docker, and Terraform.</p>
         <div class="cta-group">
           <a href="resume.html" class="btn primary">📄 View Resume</a>
@@ -68,7 +68,7 @@
         </div>
         <div class="status-strip">
           <span class="status-dot"></span>
-          <span><strong>Currently:</strong> Preparing for AWS SAA-C03 · Building hands-on cloud labs</span>
+          <span><strong>Currently:</strong> Preparing for AWS SAA-C03 · Writing a Terraform module for ECS Fargate · Reading The Phoenix Project</span>
         </div>
       </div>
     </div>
@@ -177,6 +177,7 @@
           <div class="project-head">
             <h3 class="project-title">Terraform AWS Production Lab</h3>
             <span class="project-status">✓ Completed</span>
+            <img class="ci-badge" src="https://github.com/abhishekpr-devops/terraform-aws-production-lab/actions/workflows/main.yml/badge.svg" alt="CI status" />
           </div>
           <p class="project-desc">
             Modular AWS infrastructure provisioned with Terraform, featuring remote state locking, drift detection, and resource imports. Architected a multi-environment setup (VPC, public subnet, IGW, route table, security group, EC2 web server) using reusable Terraform modules with centralized S3 remote state.
@@ -204,6 +205,7 @@
           <div class="project-head">
             <h3 class="project-title">Calculator CI/CD with SonarCloud</h3>
             <span class="project-status">✓ Completed</span>
+            <img class="ci-badge" src="https://github.com/abhishekpr-devops/calculator-cicd-sonarqube/actions/workflows/main.yml/badge.svg" alt="CI status" />
           </div>
           <p class="project-desc">
             Python Flask calculator API with Pytest unit testing, SonarCloud quality gates, Docker build, and automated EC2 deployment over SSH. Built a full GitHub Actions pipeline that automates the entire delivery lifecycle from code push to production.
@@ -231,6 +233,7 @@
           <div class="project-head">
             <h3 class="project-title">Docker Multi-App</h3>
             <span class="project-status">✓ Completed</span>
+            <img class="ci-badge" src="https://github.com/abhishekpr-devops/docker-multi-app/actions/workflows/main.yml/badge.svg" alt="CI status" />
           </div>
           <p class="project-desc">
             Multi-container microservices architecture featuring a Python Flask backend and Nginx reverse proxy connected across a custom Docker bridge network. Automated build, networking, and health validation with a Bash script.
@@ -352,6 +355,63 @@
     window.addEventListener('load', () => {
       if (!window.location.hash) window.scrollTo(0, 0);
     });
+
+    // ----- Typewriter effect -----
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const roleLine = document.querySelector('.role-line');
+    const roleOriginalHtml = roleLine ? roleLine.innerHTML : '';
+
+    function typeWriter(el, text, speed) {
+      speed = speed || 200;
+      return new Promise(resolve => {
+        el.textContent = '';
+        el.classList.add('typewriter');
+        let i = 0;
+        function tick() {
+          if (i < text.length) {
+            el.textContent += text.charAt(i);
+            i++;
+            setTimeout(tick, speed);
+          } else {
+            el.classList.add('done');
+            resolve();
+          }
+        }
+        tick();
+      });
+    }
+
+    async function runTypewriter() {
+      const promptEl = document.querySelector('.prompt.typewriter');
+      const h1El = document.querySelector('h1.typewriter');
+      const roleEl = document.querySelector('.role-line.typewriter');
+
+      if (!promptEl || !h1El || !roleEl) return;
+
+      const promptText = promptEl.getAttribute('data-text') || '';
+      const h1Text = h1El.getAttribute('data-text') || '';
+      const roleText = roleEl.getAttribute('data-text') || '';
+
+      await typeWriter(promptEl, promptText, 200);
+      await typeWriter(h1El, h1Text, 200);
+      await typeWriter(roleEl, roleText, 200);
+      roleEl.innerHTML = roleOriginalHtml;
+      roleEl.classList.add('done');
+    }
+
+    if (!prefersReducedMotion && !window.location.hash) {
+      runTypewriter();
+    } else {
+      document.querySelectorAll('.typewriter').forEach(el => {
+        el.classList.add('done');
+        const text = el.getAttribute('data-text') || '';
+        if (el.classList.contains('role-line')) {
+          el.innerHTML = roleOriginalHtml || text;
+        } else {
+          el.textContent = text;
+        }
+      });
+    }
   </script>
 
 </body>
