@@ -549,3 +549,40 @@ body.loaded { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   .scramble-text::after { animation: none; opacity: 0; }
 }
+
+/* ---------- 3D TILT CARDS ---------- */
+.project-card,
+.skill-card,
+.info-block {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow 0.3s ease;
+}
+
+.project-card:hover,
+.skill-card:hover,
+.info-block:hover {
+  box-shadow: 0 20px 60px rgba(0, 212, 170, 0.15),
+              0 0 0 1px rgba(0, 212, 170, 0.3);
+}
+
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: transparent;
+  transition: background 0.15s ease;
+  z-index: 1;
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .project-card,
+  .skill-card,
+  .info-block {
+    transform: none !important;
+    will-change: auto;
+  }
+  .tilt-glare { display: none; }
+}
