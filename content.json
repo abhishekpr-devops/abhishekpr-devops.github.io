@@ -86,5 +86,6 @@
   "seo": {
     "title": "Abhishek P R | DevOps Engineer (Fresher)",
     "description": "Portfolio of Abhishek P R — DevOps Engineer specializing in AWS, Terraform, Docker, GitHub Actions, and Linux infrastructure automation."
-  }
+  },
+  "intro": "Cloud infrastructure, automated delivery pipelines, containerized microservices, and infrastructure as code — engineered to be reliable, reproducible, and ready to scale."
 }

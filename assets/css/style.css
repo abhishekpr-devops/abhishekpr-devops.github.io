@@ -514,3 +514,38 @@ footer {
 /* ---------- LOADING FADE ---------- */
 body { opacity: 0; transition: opacity 0.3s; }
 body.loaded { opacity: 1; }
+
+/* ---------- SCRAMBLE INTRO ---------- */
+.intro-section {
+  padding: 40px 0 20px;
+}
+
+.scramble-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.7;
+  color: var(--text-dim);
+  max-width: 800px;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 3em;
+  position: relative;
+}
+
+.scramble-text::after {
+  content: '_';
+  color: var(--accent);
+  animation: cursor-blink 1s steps(2) infinite;
+  margin-left: 2px;
+}
+
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scramble-text::after { animation: none; opacity: 0; }
+}

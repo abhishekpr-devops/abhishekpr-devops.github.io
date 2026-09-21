@@ -35,6 +35,12 @@
   const currentlyEl = $('#currently');
   if (currentlyEl) currentlyEl.textContent = data.identity.currently;
 
+  const introText = $('#scrambleParagraph');
+  if (introText) {
+    introText.textContent = data.intro || '';
+    introText.setAttribute('data-scramble', data.intro || '');
+  }
+
   const ctaResume = $('#ctaResume');
   if (ctaResume) ctaResume.href = data.identity.resumePage;
 

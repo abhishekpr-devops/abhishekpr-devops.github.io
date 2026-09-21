@@ -65,6 +65,13 @@
     </div>
   </header>
 
+  <section id="intro" class="intro-section">
+    <div class="container">
+      <div class="section-title">// system.init</div>
+      <p id="scrambleParagraph" class="scramble-text" data-scramble="Loading…">Loading…</p>
+    </div>
+  </section>
+
   <section id="about">
     <div class="container">
       <div class="section-title">// about</div>
@@ -130,6 +137,7 @@
   <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
 
   <script src="assets/js/render.js"></script>
+  <script src="assets/js/scramble.js"></script>
   <script>
     const bar = document.getElementById('progressBar');
     const bt = document.getElementById('backTop');
@@ -171,6 +179,30 @@
         })();
       }
       next();
+    });
+
+    // Scramble intro text — only triggers when scrolled into view
+    window.addEventListener('content-ready', () => {
+      const el = document.getElementById('scrambleParagraph');
+      if (!el || !window.ScrambleText) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              window.ScrambleText.scrambleText(el, {
+                duration: 3200,
+                scanners: 3,
+                tickMs: 28,
+                respectMotion: true,
+              });
+            }, 400);
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(el);
     });
   </script>
 
