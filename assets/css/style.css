@@ -497,3 +497,20 @@ footer {
   }
   .status-dot { animation: none; }
 }
+
+/* ---------- KEY TAKEAWAY ---------- */
+.project-lesson {
+  font-size: 14px;
+  color: var(--text-dim);
+  background: var(--bg-alt);
+  border-left: 2px solid var(--accent);
+  padding: 10px 14px;
+  border-radius: 0 6px 6px 0;
+  margin: 16px 0 20px;
+  font-style: italic;
+}
+.project-lesson strong { color: var(--text); font-style: normal; }
+
+/* ---------- LOADING FADE ---------- */
+body { opacity: 0; transition: opacity 0.3s; }
+body.loaded { opacity: 1; }

@@ -1,0 +1,90 @@
+{
+  "identity": {
+    "name": "Abhishek P R",
+    "role": "DevOps Engineer (Fresher)",
+    "roleHighlight": "DevOps Engineer",
+    "tagline": "Building cloud infrastructure and automated deployment pipelines with AWS, Docker, and Terraform.",
+    "currently": "Preparing for AWS SAA-C03",
+    "location": "Kerala, India",
+    "email": "abhishek.devops.jobs@gmail.com",
+    "linkedin": "https://linkedin.com/in/abhishek-pr-522409274",
+    "github": "https://github.com/abhishekpr-devops",
+    "resumePdf": "Abhishek_PR_DevOps_Engineer_Resume.pdf",
+    "resumePage": "resume.html"
+  },
+  "about": "I am a Computer Science Engineering graduate and Junior DevOps Engineer passionate about building reliable cloud infrastructure and automated delivery pipelines. My technical expertise spans <strong>AWS cloud services</strong>, <strong>Infrastructure as Code with Terraform</strong>, <strong>Docker containerization</strong>, and <strong>CI/CD workflows using GitHub Actions</strong>. Through hands-on personal projects, I have built modular AWS architectures with S3 remote state locking, configured Nginx reverse proxies for containerized microservices, and automated continuous deployments to EC2 over SSH. I am CCNA-trained and currently preparing for the <strong>AWS Solutions Architect Associate</strong> exam. I am seeking a long-term engineering role where I can optimize infrastructure, enforce DevSecOps standards, and scale systems reliably.",
+  "skills": [
+    { "category": "Cloud", "items": ["AWS EC2", "S3", "VPC", "Security Groups", "Internet Gateway", "Route Tables"] },
+    { "category": "Containers", "items": ["Docker", "Docker Compose", "Docker Networking"] },
+    { "category": "CI/CD", "items": ["GitHub Actions", "Docker Hub", "Pytest", "SonarCloud"] },
+    { "category": "Infrastructure as Code", "items": ["Terraform", "Modules", "Remote State", "State Locking", "Drift Detection"] },
+    { "category": "Scripting", "items": ["Bash", "Python", "Flask"] },
+    { "category": "OS & Networking", "items": ["Linux", "Ubuntu", "Nginx", "HTTP/HTTPS", "SSH", "Cloudflare DNS"] },
+    { "category": "Monitoring", "items": ["Linux Service Monitoring", "Logs & Alerts"] },
+    { "category": "Version Control", "items": ["Git", "GitHub"] }
+  ],
+  "projects": [
+    {
+      "title": "Terraform AWS Production Lab",
+      "status": "Completed",
+      "description": "Modular AWS infrastructure provisioned with Terraform, featuring remote state locking, drift detection, and resource imports. Architected a multi-environment setup (VPC, public subnet, IGW, route table, security group, EC2 web server) using reusable Terraform modules with centralized S3 remote state.",
+      "features": [
+        "Modular HCL architecture across dev, staging, and prod",
+        "S3 remote state with locking",
+        "Drift detection and automated reconciliation",
+        "S3 bucket import with prevent_destroy lifecycle rules"
+      ],
+      "stack": ["Terraform", "AWS", "S3", "EC2", "VPC", "HCL"],
+      "repo": "https://github.com/abhishekpr-devops/terraform-aws-production-lab",
+      "takeaway": "Remote state locking prevents a class of bugs that are almost impossible to debug in production."
+    },
+    {
+      "title": "Calculator CI/CD with SonarCloud",
+      "status": "Completed",
+      "description": "Python Flask calculator API with Pytest unit testing, SonarCloud quality gates, Docker build, and automated EC2 deployment over SSH. Built a full GitHub Actions pipeline that automates the entire delivery lifecycle from code push to production.",
+      "features": [
+        "Pytest suite triggered on every push",
+        "SonarCloud DevSecOps static analysis + quality gate",
+        "Docker image build and push to Docker Hub",
+        "Automated continuous deployment to AWS EC2"
+      ],
+      "stack": ["Python", "Flask", "GitHub Actions", "Docker", "SonarCloud", "EC2"],
+      "repo": "https://github.com/abhishekpr-devops/calculator-cicd-sonarqube",
+      "takeaway": "Quality gates in CI catch issues before code review."
+    },
+    {
+      "title": "Docker Multi-App",
+      "status": "Completed",
+      "description": "Multi-container microservices architecture featuring a Python Flask backend and Nginx reverse proxy connected across a custom Docker bridge network. Automated build, networking, and health validation with a Bash script.",
+      "features": [
+        "Dual Dockerfiles for clean separation of concerns",
+        "Custom Docker bridge network for DNS service discovery",
+        "Nginx reverse proxy forwarding 8085 to backend 5000",
+        "run.sh automation for build and verification"
+      ],
+      "stack": ["Docker", "Nginx", "Flask", "Bash", "Networking"],
+      "repo": "https://github.com/abhishekpr-devops/docker-multi-app",
+      "takeaway": "Custom bridge networks give DNS-based discovery for free - no hardcoded IPs."
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Tech in Computer Science and Engineering",
+      "institution": "Jawaharlal College of Engineering and Technology (JCET), Ottapalam",
+      "years": "2021 – 2025"
+    }
+  ],
+  "certifications": [
+    { "name": "AWS Certified Solutions Architect – Associate", "issuer": "Amazon Web Services", "year": "In Progress" },
+    { "name": "CCNA 200-301 Network Fundamentals", "issuer": "Simplilearn", "year": "Jun 2026" },
+    { "name": "Introduction to Cloud Computing", "issuer": "Simplilearn", "year": "Jun 2026" }
+  ],
+  "contact": {
+    "heading": "Let's build something reliable.",
+    "message": "Open to DevOps roles, cloud infrastructure work, and CI/CD automation opportunities. Feel free to reach out."
+  },
+  "seo": {
+    "title": "Abhishek P R | DevOps Engineer (Fresher)",
+    "description": "Portfolio of Abhishek P R — DevOps Engineer specializing in AWS, Terraform, Docker, GitHub Actions, and Linux infrastructure automation."
+  }
+}
