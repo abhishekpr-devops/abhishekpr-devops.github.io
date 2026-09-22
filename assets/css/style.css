@@ -1,14 +1,14 @@
 :root {
-  --bg: #0a0e14;
-  --bg-alt: #10151f;
-  --card: #131a26;
-  --border: #1f2937;
-  --text: #e6edf3;
-  --text-dim: #8b98a9;
-  --accent: #00d4aa;
-  --accent-dim: #00a888;
-  --blue: #4a9eff;
-  --yellow: #f0b429;
+  --bg: #ffffff;
+  --bg-alt: #f7f9fc;
+  --card: #ffffff;
+  --border: #d0d7e2;
+  --text: #0f172a;
+  --text-dim: #475569;
+  --accent: #0d9488;
+  --accent-dim: #0f766e;
+  --blue: #2563eb;
+  --yellow: #d97706;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,7 +44,7 @@ code, .mono { font-family: 'JetBrains Mono', monospace; }
   width: 0%;
   z-index: 101;
   transition: width 0.1s linear;
-  box-shadow: 0 0 8px rgba(0, 212, 170, 0.6);
+  box-shadow: 0 0 8px rgba(13, 148, 136, 0.6);
 }
 
 /* ---------- BACK TO TOP ---------- */
@@ -70,7 +70,7 @@ code, .mono { font-family: 'JetBrains Mono', monospace; }
 .back-top:hover {
   border-color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 0 18px rgba(0, 212, 170, 0.25);
+  box-shadow: 0 0 18px rgba(13, 148, 136, 0.25);
 }
 
 /* ---------- NAV ---------- */
@@ -118,7 +118,7 @@ nav {
   height: 2px;
   background: var(--accent);
   border-radius: 2px;
-  box-shadow: 0 0 8px rgba(0, 212, 170, 0.6);
+  box-shadow: 0 0 8px rgba(13, 148, 136, 0.6);
 }
 
 /* ---------- HERO ---------- */
@@ -133,7 +133,7 @@ nav {
   top: -200px; left: 50%;
   transform: translateX(-50%);
   width: 800px; height: 800px;
-  background: radial-gradient(circle, rgba(0, 212, 170, 0.08), transparent 60%);
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.08), transparent 60%);
   pointer-events: none;
 }
 .terminal-bar {
@@ -222,7 +222,7 @@ h1 {
 .btn.primary:hover {
   background: var(--accent-dim);
   color: #0a0e14;
-  box-shadow: 0 0 18px 2px rgba(0, 212, 170, 0.25);
+  box-shadow: 0 0 18px 2px rgba(13, 148, 136, 0.25);
   transform: translateY(-2px);
 }
 
@@ -349,9 +349,9 @@ section { padding: 72px 0; }
   font-size: 11px;
   padding: 4px 10px;
   border-radius: 20px;
-  background: rgba(0, 212, 170, 0.1);
+  background: rgba(13, 148, 136, 0.1);
   color: var(--accent);
-  border: 1px solid rgba(0, 212, 170, 0.3);
+  border: 1px solid rgba(13, 148, 136, 0.3);
   white-space: nowrap;
 }
 .project-desc {
@@ -563,8 +563,8 @@ body.loaded { opacity: 1; }
 .project-card:hover,
 .skill-card:hover,
 .info-block:hover {
-  box-shadow: 0 20px 60px rgba(0, 212, 170, 0.15),
-              0 0 0 1px rgba(0, 212, 170, 0.3);
+  box-shadow: 0 20px 60px rgba(13, 148, 136, 0.15),
+              0 0 0 1px rgba(13, 148, 136, 0.3);
 }
 
 .tilt-glare {
